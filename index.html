@@ -138,6 +138,82 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/2020/03/25/LeetCode-148-Sort-List/"><i class="fas fa-angle-double-right"></i>LeetCode 148.Sort List</a>
+            
+        </h1>
+		
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-25T07:35:45.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-25</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-25T07:45:39.061Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-25</time>
+                
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 分钟 读完 (大约 689 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/25/LeetCode-148-Sort-List/">LeetCode 148.Sort List</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="sort-list"><a href="#sort-list" class="headerlink" title="sort-list"></a>sort-list</h3><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>在O(n log n)的时间内使用常数级空间复杂度对链表进行排序。<br>Sort a linked list in O(n log n) time using constant space complexity.</p>
+<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><p><strong>1. 归并排序（递归法）：</strong></p>
+<ul>
+<li>如果链表为空，或者只有一个结点则直接返回这个链表</li>
+<li>不为空，利用快慢指针把链表为成左右两部分，当快指针所指向结点不为空并且存在下一个元素时，快指针走两步，慢指针走一步。</li>
+<li>慢指针所指向的下一个结点即为右半部分的开始，并把slow指向的下一个结点置为空。</li>
+<li>依次递归直到左右两半部分只含有一个结点为止。</li>
+<li>最后在进行归并。</li>
+</ul>
+<p>时间复杂度：O(n log n)<br>空间复杂度：O(n)</p>
+<p><strong>2. 归并排序（迭代法）：</strong></p>
+<ul>
+<li>定义一个头结点，让这个头结点的next指向head</li>
+<li>统计链表中一共有几个结点，并遍历整个链表</li>
+<li>每次截取长度为size的链表进行归并，每轮过后size长度*2，直到size长度等于链表的长度，设size初始值为1。</li>
+<li>最后返回头结点指向的下一个结点 </li>
+</ul>
+<p>时间复杂度：O(n log n)<br>空间复杂度：O(1)</p>
+<h4 id="算法实现："><a href="#算法实现：" class="headerlink" title="算法实现："></a>算法实现：</h4><p><strong>1.归并排序（递归法）：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">sortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head.next;</span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode mid = slow.next;</span><br><span class="line">        slow.next = <span class="keyword">null</span>;</span><br><span class="line">        ListNode left = sortList(head);</span><br><span class="line">        ListNode right = sortList(mid);</span><br><span class="line">        ListNode temp = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode p = temp;</span><br><span class="line">        <span class="keyword">while</span>(left != <span class="keyword">null</span> &amp;&amp; right != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(left.val &lt; right.val)&#123;</span><br><span class="line">                p.next = left;</span><br><span class="line">                left = left.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                p.next = right;</span><br><span class="line">                right = right.next;</span><br><span class="line">            &#125;</span><br><span class="line">            p = p.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(left != <span class="keyword">null</span>) &#123;</span><br><span class="line">            p.next = left;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            p.next = right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> temp.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2. 归并排序（迭代法）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">sortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//求链表长度</span></span><br><span class="line">       ListNode p = head;</span><br><span class="line">       <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>(p != <span class="keyword">null</span>)&#123;</span><br><span class="line">           len ++;</span><br><span class="line">           p = p.next;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">        ListNode pHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        pHead.next = head;<span class="comment">//主要是考虑到只有一个结点的情况</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> size = <span class="number">1</span>; size &lt; len; size *= <span class="number">2</span>)&#123;</span><br><span class="line">           ListNode cur = pHead.next;<span class="comment">//一轮结束cur要回到链表首部</span></span><br><span class="line">           ListNode next = pHead;<span class="comment">//一轮结束next回到初始位置</span></span><br><span class="line">           <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">               ListNode left = cur;</span><br><span class="line">               ListNode right = cut(left,size);</span><br><span class="line">               cur = cut(right,size);</span><br><span class="line">               next.next = merge(left,right); </span><br><span class="line">               <span class="keyword">while</span>(next.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">                   next = next.next;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="keyword">return</span> pHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//根据步长分割链表</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ListNode <span class="title">cut</span><span class="params">(ListNode head, <span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; head.next != <span class="keyword">null</span> &amp;&amp; i &lt; size; i++) &#123;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode nextHead = head.next;</span><br><span class="line">        head.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> nextHead;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//归并链表</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ListNode <span class="title">merge</span><span class="params">(ListNode left, ListNode right)</span></span>&#123;</span><br><span class="line">        ListNode head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode p = head;</span><br><span class="line">        <span class="keyword">while</span>(left != <span class="keyword">null</span> &amp;&amp; right != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(left.val &lt; right.val)&#123;</span><br><span class="line">                p.next = left;</span><br><span class="line">                left = left.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                p.next = right;</span><br><span class="line">                right = right.next;</span><br><span class="line">            &#125;</span><br><span class="line">            p = p.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(left != <span class="keyword">null</span>)</span><br><span class="line">            p.next = left;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p.next = right;</span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+		
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/2020/03/24/test/"><i class="fas fa-angle-double-right"></i>test</a>
             
         </h1>
@@ -306,7 +382,7 @@
                     </p>		
 					<a href="/archives/">
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                     </a>
 				</div>
@@ -318,7 +394,7 @@
                     </p>
 					<a href="/categories">
 						<p class="title has-text-weight-normal">
-							1
+							2
 						</p>
 					</a>
                 </div>
@@ -330,7 +406,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            1
+                            2
                         </p>
                     </a>
                 </div>
@@ -412,6 +488,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/LeetCode/">
+            <span class="level-start">
+                <span class="level-item">LeetCode</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/test/">
             <span class="level-start">
                 <span class="level-item">test</span>
@@ -430,7 +514,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/test/" style="font-size: 10px;">test</a>
+        <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/test/" style="font-size: 10px;">test</a>
     </div>
 </div>
     
@@ -442,6 +526,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/25/LeetCode-148-Sort-List/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LeetCode 148.Sort List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-25T07:35:45.000Z">2020-03-25</time></div>
+                    <a href="/2020/03/25/LeetCode-148-Sort-List/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LeetCode 148.Sort List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode/">LeetCode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -498,7 +601,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -515,6 +618,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LeetCode/">
+                        <span class="tag">LeetCode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/test/">
@@ -547,6 +657,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/25/LeetCode-148-Sort-List/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LeetCode 148.Sort List">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-25T07:35:45.000Z">2020-03-25</time></div>
+                    <a href="/2020/03/25/LeetCode-148-Sort-List/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LeetCode 148.Sort List</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode/">LeetCode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/24/test/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="test">
@@ -600,7 +729,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -617,6 +746,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LeetCode/">
+                        <span class="tag">LeetCode</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/test/">
