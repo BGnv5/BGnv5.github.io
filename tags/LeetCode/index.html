@@ -148,6 +148,68 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
+                <a class="has-link-black-ter" href="/2020/03/25/LeetCode-147-insert-sort-list/"><i class="fas fa-angle-double-right"></i>LeetCode 147.insert-sort-list</a>
+            
+        </h1>
+		
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-25T09:18:23.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-25</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-25T09:20:58.512Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-25</time>
+                
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LeetCode/">LeetCode</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 分钟 读完 (大约 263 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/03/25/LeetCode-147-insert-sort-list/">LeetCode 147.insert-sort-list</a>
+            
+        </h1>
+        <div class="content">
+            <h3 id="insert-sort-list"><a href="#insert-sort-list" class="headerlink" title="insert-sort-list"></a>insert-sort-list</h3><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>使用插入排序对链表进行排序。<br>Sort a linked list using insertion sort.</p>
+<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><ul>
+<li>如果链表为空,返回null</li>
+<li>链表非空，定义一个头结点，遍历整个链表</li>
+<li>定义一个变量pre用来指示应该插入的位置，如果这个变量所在位置的值小于待插入元素的值，并且这个变量存在下一个结点，则变量的位置后移一位，最终所在位置即为待插入的位置。</li>
+<li>用一个变量cur来指示待插入数所在位置，并修改待插入数所指向下一个结点的位置,让它等于pre.next</li>
+<li>修改带插入位置的下一个结点,让它等于cur</li>
+</ul>
+<h4 id="算法实现："><a href="#算法实现：" class="headerlink" title="算法实现："></a>算法实现：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode pHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode pre = pHead;</span><br><span class="line">            ListNode next = cur.next;</span><br><span class="line">            <span class="keyword">while</span>(pre.next != <span class="keyword">null</span> &amp;&amp; pre.next.val &lt; cur.val)&#123;</span><br><span class="line">                pre = pre.next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur.next = pre.next;</span><br><span class="line">            pre.next = cur;</span><br><span class="line">            cur = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+		
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
                 <a class="has-link-black-ter" href="/2020/03/25/LeetCode-148-Sort-List/"><i class="fas fa-angle-double-right"></i>LeetCode 148.Sort List</a>
             
         </h1>
@@ -264,7 +326,7 @@
                     </p>		
 					<a href="/archives/">
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                     </a>
 				</div>
@@ -375,7 +437,7 @@
                 <span class="level-item">LeetCode</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/test/">
@@ -396,7 +458,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/tags/test/" style="font-size: 10px;">test</a>
+        <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/test/" style="font-size: 10px;">test</a>
     </div>
 </div>
     
@@ -408,6 +470,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2020/03/25/LeetCode-147-insert-sort-list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LeetCode 147.insert-sort-list">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-25T09:18:23.000Z">2020-03-25</time></div>
+                    <a href="/2020/03/25/LeetCode-147-insert-sort-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LeetCode 147.insert-sort-list</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode/">LeetCode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -483,7 +564,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -504,7 +585,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -539,6 +620,25 @@
         
         <article class="media">
             
+            <a href="/2020/03/25/LeetCode-147-insert-sort-list/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LeetCode 147.insert-sort-list">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-25T09:18:23.000Z">2020-03-25</time></div>
+                    <a href="/2020/03/25/LeetCode-147-insert-sort-list/" class="title has-link-black-ter is-size-6 has-text-weight-normal">LeetCode 147.insert-sort-list</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/LeetCode/">LeetCode</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2020/03/25/LeetCode-148-Sort-List/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="LeetCode 148.Sort List">
@@ -611,7 +711,7 @@
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -632,7 +732,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LeetCode/">
                         <span class="tag">LeetCode</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
