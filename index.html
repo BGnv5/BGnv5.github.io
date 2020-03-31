@@ -217,7 +217,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-25T09:18:23.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-25</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-31T13:02:20.134Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-31</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-31T13:06:38.905Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-31</time>
                 
                 
                 <div class="level-item">
@@ -241,20 +241,27 @@
             
         </h1>
         <div class="content">
-            <a id="more"></a>
-
-<h3 id="insert-sort-list"><a href="#insert-sort-list" class="headerlink" title="insert-sort-list"></a>insert-sort-list</h3><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>使用插入排序对链表进行排序。<br>Sort a linked list using insertion sort.</p>
-<h4 id="思路分析："><a href="#思路分析：" class="headerlink" title="思路分析："></a>思路分析：</h4><ul>
-<li>如果链表为空,返回null</li>
-<li>链表非空，定义一个头结点，遍历整个链表</li>
-<li>定义一个变量pre用来指示应该插入的位置，如果这个变量所在位置的值小于待插入元素的值，并且这个变量存在下一个结点，则变量的位置后移一位，最终所在位置即为待插入的位置。</li>
-<li>用一个变量cur来指示待插入数所在位置，并修改待插入数所指向下一个结点的位置,让它等于pre.next</li>
-<li>修改带插入位置的下一个结点,让它等于cur</li>
-</ul>
-<h4 id="算法实现："><a href="#算法实现：" class="headerlink" title="算法实现："></a>算法实现：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode pHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode pre = pHead;</span><br><span class="line">            ListNode next = cur.next;</span><br><span class="line">            <span class="keyword">while</span>(pre.next != <span class="keyword">null</span> &amp;&amp; pre.next.val &lt; cur.val)&#123;</span><br><span class="line">                pre = pre.next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur.next = pre.next;</span><br><span class="line">            pre.next = cur;</span><br><span class="line">            cur = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h3 id="insert-sort-list"><a href="#insert-sort-list" class="headerlink" title="insert-sort-list"></a>insert-sort-list</h3><h4 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h4><p>使用插入排序对链表进行排序。<br>Sort a linked list using insertion sort.</p>
         </div>
 		
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+		<div class="level is-mobile is-flex">
+			<div class="level-start">
+				
+				<div class="level-item is-size-7 is-uppercase">
+					<i class="fas fa-tags has-text-grey"></i>&nbsp;
+					<a class="has-link-grey -link" href="/tags/LeetCode/" rel="tag">LeetCode</a>
+				</div>
+				
+			</div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/25/LeetCode-147-insert-sort-list/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -352,7 +359,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-24T06:32:18.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-24</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-31T13:02:45.070Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-31</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-03-31T13:07:27.176Z"><i class="far fa-calendar-check">&nbsp;</i>2020-03-31</time>
                 
                 
                 <div class="level-item">
@@ -376,21 +383,27 @@
             
         </h1>
         <div class="content">
-            <a id="more"></a>
-<h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><ul>
-<li>title: 使用Hexo搭建个人博客</li>
-<li>layout: post</li>
-<li>date: 2014-03-03 19:07:43</li>
-<li>comments: true</li>
-<li>categories: Blog</li>
-<li>tags: [Hexo]</li>
-<li>keywords: Hexo, Blog</li>
-<li>description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。<br><img src="/2020/03/24/test/1.png" alt="测试图片"></li>
-</ul>
-
+            <p><img src="/2020/03/24/test/1.png" alt="测试图片"></p>
         </div>
 		
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+		<div class="level is-mobile is-flex">
+			<div class="level-start">
+				
+				<div class="level-item is-size-7 is-uppercase">
+					<i class="fas fa-tags has-text-grey"></i>&nbsp;
+					<a class="has-link-grey -link" href="/tags/test/" rel="tag">test</a>
+				</div>
+				
+			</div>
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/24/test/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
