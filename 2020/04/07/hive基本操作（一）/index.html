@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<script src="/js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>hive基本操作(一) - 程序媛王国</title>
+
+
+    <meta name="description" content="hive的基本操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive基本操作(一)">
+<meta property="og:url" content="https://bgnv5.github.io/2020/04/07/hive%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="程序媛王国">
+<meta property="og:description" content="hive的基本操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bgnv5.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-04-06T16:02:36.000Z">
+<meta property="article:modified_time" content="2020-04-06T16:07:48.986Z">
+<meta property="article:author" content="BG女王">
+<meta property="article:tag" content="hive">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bgnv5.github.io/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="hive基本操作(一)" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/avatar.png" alt="hive基本操作(一)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/BGnv5">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>hive基本操作(一)
+            
+        </h1>
+		
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-06T16:02:36.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-07</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-06T16:07:48.986Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-07</time>
+                
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/hive/">hive</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1813 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                hive基本操作(一)
+            
+        </h1>
+        <div class="content">
+            <p>包括Hive的DDL操作、DML操作以及Hive的join操作</p>
+<a id="more"></a>
+
+<h3 id="Hive-基本操作（一）"><a href="#Hive-基本操作（一）" class="headerlink" title="Hive 基本操作（一）"></a>Hive 基本操作（一）</h3><h4 id="DDL操作"><a href="#DDL操作" class="headerlink" title="DDL操作"></a>DDL操作</h4><h5 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h5><ul>
+<li>创建内部表<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> student1 (sno <span class="type">int</span>,sname string,age <span class="type">int</span>,sex string) <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">' '</span>;</span><br></pre></td></tr></table></figure></li>
+<li>创建外部表<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span> student (sno <span class="type">int</span>,sname string,age <span class="type">int</span>,sex string) <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">' '</span> <span class="keyword">location</span> <span class="string">'/user/external'</span>;</span><br></pre></td></tr></table></figure></li>
+<li>创建与已知表相同结构的表</li>
+</ul>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">##copy_student1</span>表的结构和stude<span class="symbol">nt1</span>相同但是并不包含stude<span class="symbol">nt1</span>中的数据</span><br><span class="line"></span><br><span class="line">hive&gt; create table copy_stude<span class="symbol">nt1</span> like stude<span class="symbol">nt1</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>创建分区表</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">table</span> book(id <span class="type">int</span>,<span class="type">name</span> string) partitioned <span class="keyword">by</span> (country string) <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">' '</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建分桶表</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##桶操作是通过clustered <span class="keyword">by</span>实现的，bucket中的数据可以通过sort <span class="keyword">by</span>排序。</span><br><span class="line">##分桶表不允许以外部文件方式导入数据，只能从另外一张表导入数据</span><br><span class="line"></span><br><span class="line">//<span class="number">1.</span>开启分桶机制</span><br><span class="line">hive&gt; <span class="keyword">set</span> hive.enforce.bucketing=<span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">//<span class="number">2.</span>创建分桶表teacher，以id作为分桶机制，分为<span class="number">2</span>个桶</span><br><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">table</span> teacher(id <span class="type">int</span>,<span class="type">name</span> string,age <span class="type">int</span>) clustered <span class="keyword">by</span>(id) <span class="keyword">into</span> <span class="number">2</span> buckets <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">' '</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建Struct类型的表</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##导入数据格式：<span class="number">1</span>,zhou:<span class="number">30</span></span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">table</span> student_struct(id <span class="type">int</span>,<span class="keyword">info</span> struct&lt;<span class="type">name</span>:string,age:<span class="type">int</span>&gt;) <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">','</span> collection items terminated <span class="keyword">by</span> <span class="string">':'</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建Array类型的表</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##导入数据的格式：<span class="number">034</span>,<span class="number">1</span>:<span class="number">2</span>:<span class="number">3</span>:<span class="number">4</span></span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">create</span> <span class="keyword">table</span> course_array(<span class="type">name</span> string,course_id <span class="keyword">array</span>&lt;<span class="type">int</span>&gt;) <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">','</span> collection items terminated <span class="keyword">by</span> <span class="string">':'</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建Map类型的表</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##导入数据的格式：1       job:80,team:60,person:70 </span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">create</span> table employee(id <span class="keyword">string</span>,perf <span class="keyword">map</span>&lt;<span class="keyword">string</span>,int&gt;) row format delimited fields terminated <span class="keyword">by</span> <span class="string">'\t'</span> <span class="keyword">collection</span> items terminated <span class="keyword">by</span><span class="string">','</span> <span class="keyword">map</span> <span class="keyword">keys</span> terminated <span class="keyword">by</span> <span class="string">':'</span>;</span><br></pre></td></tr></table></figure>
+<h5 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h5></li>
+<li><p>添加列</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="function">alter table student1 <span class="keyword">add</span> <span class="title">columns</span>(<span class="params">address <span class="keyword">string</span>,grade <span class="keyword">string</span></span>)</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>修改列</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##将test表中<span class="type">name</span>字段重命名为sname,类型为string，放到age字段后面</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">alter</span> <span class="keyword">table</span> test change <span class="type">name</span> sname string  <span class="keyword">after</span> age;</span><br></pre></td></tr></table></figure></li>
+<li><p>修改表名</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">rename</span> <span class="keyword">to</span> student2;</span><br></pre></td></tr></table></figure></li>
+<li><p>修改分区名</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">alter</span> <span class="keyword">table</span> book <span class="keyword">partition</span>(country=<span class="string">'us'</span>) <span class="keyword">rename</span> <span class="keyword">to</span> <span class="keyword">partition</span>(country=<span class="string">'US'</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>增加分区</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">alter</span> <span class="keyword">table</span> book <span class="keyword">add</span> <span class="keyword">partition</span>(country=<span class="string">'jp'</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>删除分区</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">alter</span> <span class="keyword">table</span> book <span class="keyword">drop</span> <span class="keyword">partition</span>(country=<span class="string">'jp'</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>修复分区</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; msck repair <span class="keyword">table</span> book;</span><br></pre></td></tr></table></figure>
+<h5 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h5><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; drop <span class="keyword">table</span> test1;</span><br></pre></td></tr></table></figure>
+<h5 id="显示命令"><a href="#显示命令" class="headerlink" title="显示命令"></a>显示命令</h5></li>
+<li><p>查看数据库</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; show databases<span class="comment">;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>查看数据表</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">show</span> <span class="keyword">tables</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>查看表的结构</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; desc student1<span class="comment">;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>查看表中都有哪些分区</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; show partitions book<span class="comment">;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>查看表的信息</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; describe <span class="keyword">formatted</span> table_name；</span><br></pre></td></tr></table></figure>
+<h4 id="DML操作"><a href="#DML操作" class="headerlink" title="DML操作"></a>DML操作</h4></li>
+</ul>
+<h5 id="Load"><a href="#Load" class="headerlink" title="Load"></a>Load</h5><ul>
+<li>加载本地数据到普通表中<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">load</span> data <span class="keyword">local</span> inpath <span class="string">'/home/bgnv5/data/student1.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> student1;</span><br></pre></td></tr></table></figure></li>
+<li>加载本地数据到分区表中<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">load</span> data <span class="keyword">local</span> inpath <span class="string">'/home/bgnv5/data/book.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> book <span class="keyword">partition</span>(country=<span class="string">'cn'</span>);</span><br></pre></td></tr></table></figure></li>
+<li>加载HDFS中的文件到表中<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">load</span> data inpath<span class="string">'/user/hive/student1.txt'</span> <span class="keyword">into</span> <span class="keyword">table</span> copy_student1;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h5><ul>
+<li><p>将表中的数据插入到一张表中</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">insert</span> overwrite table copy_student2 <span class="keyword">select</span> *  <span class="keyword">from</span> student1;</span><br></pre></td></tr></table></figure></li>
+<li><p>将表中的数据插入到一个分区中</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">insert</span> overwrite <span class="keyword">table</span> book <span class="keyword">partition</span>(country=<span class="string">'jp'</span>) <span class="keyword">select</span> id,<span class="type">name</span> <span class="keyword">from</span> book_input <span class="keyword">where</span> country=<span class="string">'jp'</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>将表中的数据插入到多张表中</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; from student1 </span><br><span class="line">    &gt; insert overwrite <span class="keyword">table</span> copy_student3 </span><br><span class="line">    &gt; select * </span><br><span class="line">    &gt; insert overwrite <span class="keyword">table</span> copy_student4 </span><br><span class="line">    &gt; select *;</span><br></pre></td></tr></table></figure></li>
+<li><p>将表中的数据插入到多个分区中</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">from</span> book_input</span><br><span class="line">    &gt; <span class="keyword">insert</span> overwrite <span class="keyword">table</span> book <span class="keyword">partition</span>(country=<span class="string">'英国'</span>) </span><br><span class="line">    &gt; <span class="keyword">select</span> id,<span class="type">name</span> <span class="keyword">where</span> country=<span class="string">'英国'</span> </span><br><span class="line">    &gt; <span class="keyword">insert</span> overwrite <span class="keyword">table</span> book <span class="keyword">partition</span>(country=<span class="string">'俄罗斯'</span>) </span><br><span class="line">    &gt; <span class="keyword">select</span> id,<span class="type">name</span> <span class="keyword">where</span> country=<span class="string">'俄罗斯'</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用动态分区将表中的数据自动插入到分区中</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//<span class="number">1.</span>开启动态分区，默认是<span class="keyword">false</span></span><br><span class="line">hive&gt; <span class="keyword">set</span> hive.exec.dynamic.<span class="keyword">partition</span>=<span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">//<span class="number">2.</span>开启允许所有分区都是动态的，否则必须要有静态分区才能使用。</span><br><span class="line">hive&gt; <span class="keyword">set</span> hive.exec.dynamic.<span class="keyword">partition</span>.mode=nonstrict;</span><br><span class="line"></span><br><span class="line">//<span class="number">3.</span>插入数据</span><br><span class="line">hive&gt; <span class="keyword">insert</span> overwrite <span class="keyword">table</span> book <span class="keyword">partition</span>(country) <span class="keyword">select</span> id,<span class="type">name</span>,country <span class="keyword">from</span> book_input;</span><br></pre></td></tr></table></figure></li>
+<li><p>将表中的数据插入到本地目录下</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">insert</span> overwrite <span class="keyword">local</span> directory <span class="string">'/home/bgnv5/data_test'</span> <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">' '</span> <span class="keyword">select</span> * <span class="keyword">from</span> book_input;</span><br></pre></td></tr></table></figure></li>
+<li><p>将表中的数据插入到hdfs目录下</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">insert</span> overwrite directory <span class="string">'/stu'</span> <span class="keyword">row</span> <span class="keyword">format</span> delimited fields terminated <span class="keyword">by</span> <span class="string">' '</span> <span class="keyword">select</span> * <span class="keyword">from</span> student1;</span><br></pre></td></tr></table></figure>
+<h5 id="select"><a href="#select" class="headerlink" title="select"></a>select</h5></li>
+<li><p>查询表的所有字段</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1;</span><br></pre></td></tr></table></figure></li>
+<li><p>查询表的某个字段属性</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">select</span> sname <span class="keyword">from</span> student1;</span><br></pre></td></tr></table></figure></li>
+<li><p>查看某一具体分区</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> book <span class="keyword">where</span> country=<span class="string">'cn'</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>where条件查询</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 <span class="keyword">where</span> sno&gt;<span class="number">201501004</span> and address=<span class="string">"北京"</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>distinct去重查询</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##查询student1表中age和grade都不相同的学生</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">select</span> <span class="keyword">distinct</span> age,grade <span class="keyword">from</span> student1;</span><br></pre></td></tr></table></figure></li>
+<li><p>limit限制查询</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">##只显示4条记录</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 <span class="keyword">limit</span> <span class="number">4</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>Struct类型查询</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> id,<span class="keyword">info</span>.name,<span class="keyword">info</span>.age <span class="keyword">from</span> student_struct;</span><br></pre></td></tr></table></figure></li>
+<li><p>Array类型查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">name</span>,course_id[<span class="number">0</span>],<span class="keyword">size</span>(course_id) <span class="keyword">from</span> course_array;</span><br></pre></td></tr></table></figure></li>
+<li><p>Map类型查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span>,pref[<span class="string">'job'</span>],<span class="keyword">size</span>(pref) <span class="keyword">from</span> employee;</span><br></pre></td></tr></table></figure></li>
+<li><p>order by 排序查询</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">##全局排序，默认升序</span><br><span class="line">##只有一个reduce，即使设置多个reduce个数hive在运行的时候也会设置成<span class="number">1</span>个.</span><br><span class="line">##可以通过设置hive.mapred.mode属性优化查询速度，设置此模式必须指定<span class="keyword">limit</span>否则会报错</span><br><span class="line"></span><br><span class="line">//hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 <span class="keyword">order</span> <span class="keyword">by</span> age;</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">set</span> hive.mapred.mode=<span class="keyword">strict</span>;</span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">limit</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>group by分组查询</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##必须配合聚合函数使用,且可以同时做多个聚合操作，但是聚合操作的对象必须是同一列</span></span><br><span class="line"></span><br><span class="line">hive&gt; select count(*) <span class="keyword">from</span> student1<span class="built_in"> group </span>by sex;</span><br></pre></td></tr></table></figure></li>
+<li><p>sort by </p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">##同一个reduce中的数据是有序的，不同的reduce则不能保证有序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.设置reduce个数</span></span><br><span class="line">hive&gt; <span class="keyword">set</span> mapred.reduce.tasks=<span class="number">2</span>;</span><br><span class="line"><span class="comment">//2.使用sort by 进行排序</span></span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 sort <span class="keyword">by</span> age;</span><br></pre></td></tr></table></figure></li>
+<li><p>distribute by分区排序</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">##按照指定的字段把数据划分到不同的reduce中</span></span><br><span class="line"><span class="meta">##与sort by 同时使用时要放到前面</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.设置reduce个数</span></span><br><span class="line">hive&gt; <span class="keyword">set</span> mapred.reduce.tasks=<span class="number">2</span>;</span><br><span class="line"><span class="comment">//2.按照性别划分到不同的reduce中进行排序，</span></span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 distribute <span class="keyword">by</span> age;</span><br></pre></td></tr></table></figure></li>
+<li><p>cluster by簇排序</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">##只能升序</span><br><span class="line">##包含了distribute <span class="keyword">by</span> 和sort <span class="keyword">by</span> 两个功能</span><br><span class="line">##当 distribute <span class="keyword">by</span> 和 sorts <span class="keyword">by</span> 字段相同时，可使用 <span class="keyword">cluster</span> <span class="keyword">by</span> 方式替代，如：</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 <span class="keyword">cluster</span> <span class="keyword">by</span> age;</span><br><span class="line">等价于</span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> student1 distribute <span class="keyword">by</span> age sort <span class="keyword">by</span> age;</span><br></pre></td></tr></table></figure></li>
+<li><p>分桶表的抽样查询</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##假设桶数为n,则bucket x <span class="keyword">out</span> of y on XXX表示为：</span><br><span class="line">##从第x个桶开始抽样，抽取n/y个桶的数据</span><br><span class="line">##例如，n=<span class="number">6</span>,x=<span class="number">1</span>,y=<span class="number">3</span>抽取两个桶的数据，因此抽取的样本为<span class="number">1</span>和<span class="number">4</span>桶中的数据</span><br><span class="line"> </span><br><span class="line">hive&gt; select * <span class="keyword">from</span> teacher tablesample(bucket <span class="number">1</span> <span class="keyword">out</span> of <span class="number">2</span> on name);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Hive的join操作"><a href="#Hive的join操作" class="headerlink" title="Hive的join操作"></a>Hive的join操作</h4><ul>
+<li>内关联 inner join<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hive&gt;</span> <span class="string">select</span> <span class="string">*</span> <span class="string">from</span> <span class="string">a;</span></span><br><span class="line"><span class="string">OK</span></span><br><span class="line"><span class="number">1</span>	<span class="string">zhangsan</span></span><br><span class="line"><span class="number">2</span>	<span class="string">wangwu</span></span><br><span class="line"><span class="number">3</span>	<span class="string">lisi</span></span><br><span class="line"><span class="attr">Time taken:</span> <span class="number">0.23</span> <span class="string">seconds,</span> <span class="attr">Fetched:</span> <span class="number">3</span> <span class="string">row(s)</span></span><br><span class="line"></span><br><span class="line"><span class="string">hive&gt;</span> <span class="string">select</span> <span class="string">*</span> <span class="string">from</span> <span class="string">b;</span></span><br><span class="line"><span class="string">OK</span></span><br><span class="line"><span class="number">1</span>	<span class="number">20</span></span><br><span class="line"><span class="number">2</span>	<span class="number">18</span></span><br><span class="line"><span class="number">4</span>	<span class="number">21</span></span><br><span class="line"><span class="number">6</span>	<span class="number">23</span></span><br><span class="line"><span class="attr">Time taken:</span> <span class="number">0.129</span> <span class="string">seconds,</span> <span class="attr">Fetched:</span> <span class="number">4</span> <span class="string">row(s)</span></span><br><span class="line"></span><br><span class="line"><span class="string">hive&gt;</span> <span class="string">select</span> <span class="string">a.id,a.name,b.age</span> <span class="string">from</span> <span class="string">a</span> <span class="string">join</span> <span class="string">b</span> <span class="string">on(a.id=b.id);</span></span><br><span class="line"><span class="string">OK</span></span><br><span class="line"><span class="number">1</span>	<span class="string">zhangsan</span>	<span class="number">20</span></span><br><span class="line"><span class="number">2</span>	<span class="string">wangwu</span>	<span class="number">18</span></span><br><span class="line"><span class="attr">Time taken:</span> <span class="number">75.971</span> <span class="string">seconds,</span> <span class="attr">Fetched:</span> <span class="number">2</span> <span class="string">row(s)</span></span><br></pre></td></tr></table></figure></li>
+<li>左外关联<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##以左表为基础，如果右侧表可以和左侧表关联，则为右侧表值，否则为null</span></span><br><span class="line"></span><br><span class="line"><span class="string">hive&gt;</span> <span class="string">select</span> <span class="string">a.id,a.name,b.age</span> <span class="string">from</span> <span class="string">a</span> <span class="string">left</span> <span class="string">join</span> <span class="string">b</span> <span class="string">on(a.id=b.id);</span></span><br><span class="line"><span class="string">OK</span></span><br><span class="line"><span class="number">1</span>	<span class="string">zhangsan</span>	<span class="number">20</span></span><br><span class="line"><span class="number">2</span>	<span class="string">wangwu</span>	<span class="number">18</span></span><br><span class="line"><span class="number">3</span>	<span class="string">lisi</span>	<span class="literal">NULL</span></span><br><span class="line"><span class="attr">Time taken:</span> <span class="number">51.883</span> <span class="string">seconds,</span> <span class="attr">Fetched:</span> <span class="number">3</span> <span class="string">row(s)</span></span><br></pre></td></tr></table></figure></li>
+<li>右外关联<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##以右表为基础，如果左侧表可以和右侧表关联，则值为左侧表值，否则为NULL</span></span><br><span class="line"></span><br><span class="line"><span class="string">hive&gt;</span> <span class="string">select</span> <span class="string">b.id,a.name,b.age</span> <span class="string">from</span> <span class="string">a</span> <span class="string">right</span> <span class="string">join</span> <span class="string">b</span> <span class="string">on(a.id=b.id);</span></span><br><span class="line"><span class="string">OK</span></span><br><span class="line"><span class="number">1</span>	<span class="string">zhangsan</span>	<span class="number">20</span></span><br><span class="line"><span class="number">2</span>	<span class="string">wangwu</span>	<span class="number">18</span></span><br><span class="line"><span class="number">4</span>	<span class="literal">NULL</span>	<span class="number">21</span></span><br><span class="line"><span class="number">6</span>	<span class="literal">null</span>	<span class="number">23</span></span><br><span class="line"><span class="attr">Time taken:</span> <span class="number">45.56</span> <span class="string">seconds,</span> <span class="attr">Fetched:</span> <span class="number">4</span> <span class="string">row(s)</span></span><br></pre></td></tr></table></figure></li>
+<li>全关联<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##两个表进行关联，如果右表没有值补充NULL、如果左边没有值补充NULL</span></span><br><span class="line"></span><br><span class="line"><span class="string">hive&gt;</span> <span class="string">select</span> <span class="string">stu.sno,stu.sname,msg.age</span> <span class="string">from</span> <span class="string">stu</span> <span class="string">full</span> <span class="string">join</span> <span class="string">msg</span> <span class="string">on</span> <span class="string">(stu.sno=msg.sno);</span></span><br><span class="line"><span class="string">OK</span></span><br><span class="line"><span class="number">1</span>	<span class="string">zhangsan</span>	<span class="number">20</span></span><br><span class="line"><span class="number">2</span>	<span class="string">wangwu</span>	<span class="number">18</span></span><br><span class="line"><span class="number">3</span>	<span class="string">lisi</span>	<span class="literal">NULL</span></span><br><span class="line"><span class="literal">NULL</span>	<span class="literal">NULL</span>	<span class="number">21</span></span><br><span class="line"><span class="literal">NULL</span>	<span class="literal">NULL</span>	<span class="number">23</span></span><br><span class="line"><span class="attr">Time taken:</span> <span class="number">152.029</span> <span class="string">seconds,</span> <span class="attr">Fetched:</span> <span class="number">4</span> <span class="string">row(s)</span></span><br></pre></td></tr></table></figure></li>
+<li>left semi join<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##左边表返回key在右边表中存在的值对应的数据</span><br><span class="line"></span><br><span class="line">hive&gt; <span class="keyword">select</span> * <span class="keyword">from</span> a <span class="keyword">left</span> <span class="keyword">semi</span> <span class="keyword">join</span> b <span class="keyword">on</span>(a.id=b.id);</span><br><span class="line">1	zhangsan</span><br><span class="line">2	wangwu</span><br></pre></td></tr></table></figure></li>
+<li>笛卡尔积关联 cross join<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; select a.id,a.name,b.age from a cross join b;</span><br><span class="line">OK</span><br><span class="line">1	zhangsan	20</span><br><span class="line">1	zhangsan	18</span><br><span class="line">1	zhangsan	21</span><br><span class="line">1	zhangsan	23</span><br><span class="line">2	wangwu	20</span><br><span class="line">2	wangwu	18</span><br><span class="line">2	wangwu	21</span><br><span class="line">2	wangwu	23</span><br><span class="line">3	lisi	20</span><br><span class="line">3	lisi	18</span><br><span class="line">3	lisi	21</span><br><span class="line">3	lisi	23</span><br><span class="line">Time taken: 43.367 seconds, Fetched: 12 row(s)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+        </div>
+		
+            <ul class="post-copyright">
+				<li><strong>本文标题：</strong><a href="https://bgnv5.github.io/2020/04/07/hive%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/">hive基本操作(一)</a></li>
+				<li><strong>本文作者：</strong><a href="https://bgnv5.github.io">BG女王</a></li>
+				<li><strong>本文链接：</strong><a href="https://bgnv5.github.io/2020/04/07/hive%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/">https://bgnv5.github.io/2020/04/07/hive%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/</a></li>
+				<li><strong>发布时间：</strong>2020-04-07</li>
+				<li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+				</li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0"/>
+		<div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/hive/" rel="tag">hive</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/weixin.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/02/Hive%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/">
+                <span class="level-item">Hive基本介绍</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'a6f62ebcdeb4197a655f',
+        clientSecret: '033fbfe30eaa134e57cf6a9f83b90d61480b0593',
+        id: 'a4a622652ec1511f84731492501dce49',
+        repo: 'BGnv5.github.io',
+        owner: 'BGnv5',
+        admin: "BGnv5",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="BG女王">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        BG女王
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        1264021622@qq.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>浙江 台州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+		<nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+				
+				<div>	
+                    <p class="heading">
+                        文章
+                    </p>		
+					<a href="/archives/">
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                    </a>
+				</div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+					<a href="/categories">
+						<p class="title has-text-weight-normal">
+							3
+						</p>
+					</a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/BGnv5" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/BGnv5">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+	<div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Hive-基本操作（一）">
+        <span class="has-mr-6">1</span>
+        <span>Hive 基本操作（一）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#DDL操作">
+        <span class="has-mr-6">1.1</span>
+        <span>DDL操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#创建表">
+        <span class="has-mr-6">1.1.1</span>
+        <span>创建表</span>
+        </a></li><li>
+        <a class="is-flex" href="#修改表">
+        <span class="has-mr-6">1.1.2</span>
+        <span>修改表</span>
+        </a></li><li>
+        <a class="is-flex" href="#删除表">
+        <span class="has-mr-6">1.1.3</span>
+        <span>删除表</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示命令">
+        <span class="has-mr-6">1.1.4</span>
+        <span>显示命令</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#DML操作">
+        <span class="has-mr-6">1.2</span>
+        <span>DML操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Load">
+        <span class="has-mr-6">1.2.1</span>
+        <span>Load</span>
+        </a></li><li>
+        <a class="is-flex" href="#insert">
+        <span class="has-mr-6">1.2.2</span>
+        <span>insert</span>
+        </a></li><li>
+        <a class="is-flex" href="#select">
+        <span class="has-mr-6">1.2.3</span>
+        <span>select</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Hive的join操作">
+        <span class="has-mr-6">1.3</span>
+        <span>Hive的join操作</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/avatar.png" alt="hive基本操作(一)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 BG女王&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="BGnv5 GitHub" href="https://github.com/BGnv5">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://bgnv5.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
