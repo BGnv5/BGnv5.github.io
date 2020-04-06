@@ -20,7 +20,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bgnv5.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-04-01T19:21:49.000Z">
-<meta property="article:modified_time" content="2020-04-01T19:40:01.215Z">
+<meta property="article:modified_time" content="2020-04-06T15:58:39.883Z">
 <meta property="article:author" content="BG女王">
 <meta property="article:tag" content="hive">
 <meta name="twitter:card" content="summary">
@@ -152,7 +152,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-01T19:21:49.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-02</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-01T19:40:01.215Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-02</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-06T15:58:39.883Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-06</time>
                 
                 
                 <div class="level-item">
@@ -163,7 +163,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2039 个字)
+                    19 分钟 读完 (大约 2860 个字)
                 </span>
                 
                 
@@ -258,6 +258,54 @@
 <li>8）执行引擎接收来自数据节点的执行结果。  </li>
 <li>9）执行引擎发送这些结果给驱动程序。</li>
 <li>10）驱动程序将结果发送给Hive接口（返回给用户）</li>
+</ul>
+<h5 id="Hive-中的数据模型："><a href="#Hive-中的数据模型：" class="headerlink" title="Hive 中的数据模型："></a>Hive 中的数据模型：</h5><ul>
+<li>database：在 HDFS中表现为${hive.metastore.warehouse.dir}目录下一个文件夹</li>
+<li>table：在 HDFS 中表现所属 database 目录下一个文件夹</li>
+<li>external table：与 table 类似，不过其数据存放位置可以指定任意 HDFS 目录路径</li>
+<li>partition：在 HDFS 中表现为 table 目录下的子目录</li>
+<li>bucket：在 HDFS 中表现为同一个表目录或者分区目录下根据某个字段的值进行 hash 散列之后的多个文件</li>
+<li>view：与传统数据库类似，只读，基于基本表创建</li>
+</ul>
+<h5 id="Hive-中的内部表、外部表"><a href="#Hive-中的内部表、外部表" class="headerlink" title="Hive 中的内部表、外部表"></a>Hive 中的内部表、外部表</h5><h6 id="什么是内部表和外部表"><a href="#什么是内部表和外部表" class="headerlink" title="什么是内部表和外部表"></a>什么是内部表和外部表</h6><ul>
+<li>hive有两种类型的表：内部表、外部表</li>
+<li>如果在创建表的时候没有指明是内部表还是外部表，则默认是内部表</li>
+</ul>
+<h6 id="内部表和外部表的区别："><a href="#内部表和外部表的区别：" class="headerlink" title="内部表和外部表的区别："></a>内部表和外部表的区别：</h6><p>内部表：</p>
+<ul>
+<li>内部表的数据会放在hdfs中的特定位置中，通常是/user/hive/warehouse</li>
+<li>当使用drop table table_name;删除内部表时，数据文件也会一并删除</li>
+</ul>
+<p>外部表：</p>
+<ul>
+<li>外部表的数据的可以存放在 hdfs任意路径下</li>
+<li>当使用drop table table_name;删除外部表时，只是删除了表的元数据，它的数据并没有被删除</li>
+</ul>
+<h6 id="内部表和外部表的使用场景"><a href="#内部表和外部表的使用场景" class="headerlink" title="内部表和外部表的使用场景"></a>内部表和外部表的使用场景</h6><p>内部表：</p>
+<ul>
+<li>适用于临时创建的中间表。</li>
+<li>如果数据的所有处理都在 Hive 中进行，那么倾向于选择内部表。</li>
+</ul>
+<p>外部表：</p>
+<ul>
+<li>适用于数据多部门共享。</li>
+<li>如果 Hive 和其他工具要针对相同的数据集进行处理，外部表更合适。使用外部表访问存储在 HDFS 上的初始数据，然后通过 Hive 转换数据并存到内部表中。</li>
+</ul>
+<h5 id="Hive中的分区表和分桶表"><a href="#Hive中的分区表和分桶表" class="headerlink" title="Hive中的分区表和分桶表"></a>Hive中的分区表和分桶表</h5><h6 id="为什么要进行分区和分桶"><a href="#为什么要进行分区和分桶" class="headerlink" title="为什么要进行分区和分桶"></a>为什么要进行分区和分桶</h6><p>分区：</p>
+<ul>
+<li>分区的最大好处就是可以更快的执行查询。</li>
+<li>在分区的帮助下，将使用分区列的名称创建一个子目录，并且当使用where子句执行查询时，将只扫描特定的子目录，而不是扫描整个表。能够更快地执行查询。</li>
+</ul>
+<p>分桶：</p>
+<ul>
+<li>分桶表是一种更细粒度的数据分配方式，一个表既可以分区也可以分桶。</li>
+<li>对表进行分桶操作有利于实现数据的抽样，方便进行数据测试</li>
+</ul>
+<h6 id="分区表和分桶表的区别"><a href="#分区表和分桶表的区别" class="headerlink" title="分区表和分桶表的区别"></a>分区表和分桶表的区别</h6><ul>
+<li>分区: 是以字段的形式在表结构中存在，通过describe table命令可以查看到字段存在， 但是该字段不存放实际的数据内容，仅仅是分区的表示（伪列）。</li>
+</ul>
+<ul>
+<li>分桶:对于表（table）或者分区， Hive可以进一步组织成桶，也就是说桶是更为细粒度的数据范围划分。Hive也是 针对某一列进行桶的组织。Hive采用对列值哈希，然后除以桶的个数求余的方式决定该条记录存放在哪个桶当中。实际使用比较少。</li>
 </ul>
 
         </div>
@@ -512,6 +560,38 @@
         <a class="is-flex" href="#Hive-具体工作流程">
         <span class="has-mr-6">1.5.3</span>
         <span>Hive 具体工作流程</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Hive-中的数据模型：">
+        <span class="has-mr-6">1.6</span>
+        <span>Hive 中的数据模型：</span>
+        </a></li><li>
+        <a class="is-flex" href="#Hive-中的内部表、外部表">
+        <span class="has-mr-6">1.7</span>
+        <span>Hive 中的内部表、外部表</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是内部表和外部表">
+        <span class="has-mr-6">1.7.1</span>
+        <span>什么是内部表和外部表</span>
+        </a></li><li>
+        <a class="is-flex" href="#内部表和外部表的区别：">
+        <span class="has-mr-6">1.7.2</span>
+        <span>内部表和外部表的区别：</span>
+        </a></li><li>
+        <a class="is-flex" href="#内部表和外部表的使用场景">
+        <span class="has-mr-6">1.7.3</span>
+        <span>内部表和外部表的使用场景</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Hive中的分区表和分桶表">
+        <span class="has-mr-6">1.8</span>
+        <span>Hive中的分区表和分桶表</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#为什么要进行分区和分桶">
+        <span class="has-mr-6">1.8.1</span>
+        <span>为什么要进行分区和分桶</span>
+        </a></li><li>
+        <a class="is-flex" href="#分区表和分桶表的区别">
+        <span class="has-mr-6">1.8.2</span>
+        <span>分区表和分桶表的区别</span>
         </a></li></ul></li></ul></li></ul>
             </div>
         </div>
