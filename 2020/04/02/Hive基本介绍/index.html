@@ -20,7 +20,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bgnv5.github.io/images/og_image.png">
 <meta property="article:published_time" content="2020-04-01T19:21:49.000Z">
-<meta property="article:modified_time" content="2020-04-06T16:14:08.786Z">
+<meta property="article:modified_time" content="2020-04-06T16:15:31.815Z">
 <meta property="article:author" content="BG女王">
 <meta property="article:tag" content="hive">
 <meta name="twitter:card" content="summary">
@@ -152,7 +152,7 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-04-01T19:21:49.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-02</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-06T16:14:08.786Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-07</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-06T16:15:31.815Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-07</time>
                 
                 
                 <div class="level-item">
@@ -209,7 +209,7 @@
 <li>Hive是”读时模式”，即在加载数据的时候不会对数据进行检查/更改，在查询操作时才会检查数据的格式；而关系型数据库是”写时模式”，在数据加载的时候就会对数据模式进行检查校验的操作。</li>
 <li>Hive延迟较高，因为Hive不支持索引，所以查询的时候会扫描整个表，而且Hive在启动MapReduce Job的时候也会造成较大的延迟；而关系型数据库支持复杂索引，所以延迟相对较小</li>
 </ul>
-<h5 id="Hive-架构"><a href="#Hive-架构" class="headerlink" title="Hive 架构"></a>Hive 架构</h5><p><img src="/2020/04/02/Hive%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/Hive%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D%5Chive%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt="hive架构图"></p>
+<h5 id="Hive-架构"><a href="#Hive-架构" class="headerlink" title="Hive 架构"></a>Hive 架构</h5><p><img src="/2020/04/02/Hive%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/hive%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt="hive架构图"></p>
 <h6 id="Hive架构设计"><a href="#Hive架构设计" class="headerlink" title="Hive架构设计"></a>Hive架构设计</h6><p>Hive架构设计主要包括三个部分：</p>
 <ul>
 <li>Hive Clients：Hive客户端，它为不同类型的应用程序提供不同的驱动，使得Hive可以通过类似Java、Python等语言连接，同时也提供了JDBC和ODBC驱动。 </li>
@@ -246,7 +246,7 @@
 </ul>
 </li>
 </ul>
-<h6 id="Hive-具体工作流程"><a href="#Hive-具体工作流程" class="headerlink" title="Hive 具体工作流程"></a>Hive 具体工作流程</h6><p><img src="/2020/04/02/Hive%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/Hive%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D%5Chive%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%9B%BE.jpg" alt="hive工作流程图"></p>
+<h6 id="Hive-具体工作流程"><a href="#Hive-具体工作流程" class="headerlink" title="Hive 具体工作流程"></a>Hive 具体工作流程</h6><p><img src="/2020/04/02/Hive%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/hive%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%9B%BE.jpg" alt="hive工作流程图"></p>
 <ul>
 <li>1）用户通过用户接口提交查询任务给Driver。  </li>
 <li>2）Driver获得该用户的计划，调用编译器检查查询语法并分析查询计划和要求。 </li>
