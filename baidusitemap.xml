@@ -3,48 +3,8 @@
 
     
   <url>
-    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E4%25BC%2581%25E4%25B8%259A%25E9%259D%25A2%25E8%25AF%2595%25E9%25A2%2598/</loc>
-    <lastmod>2020-04-13T14:01:33.755Z</lastmod>
-    <data>
-        <display>
-        <title>Flume企业面试题</title>
-        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
-        
-        <tag>Flume </tag>
-         
-         
-           
-             
-              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E7%259B%2591%25E6%258E%25A7%25E4%25B9%258BGanglia/</loc>
-    <lastmod>2020-04-13T14:00:26.619Z</lastmod>
-    <data>
-        <display>
-        <title>Flume监控之Ganglia</title>
-        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
-        
-        <tag>Flume </tag>
-         
-         
-           
-             
-              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://bgnv5.github.io/2020/03/25/Flume%25E5%258F%2582%25E6%2595%25B0%25E8%25A7%25A3%25E6%259E%2590/</loc>
-    <lastmod>2020-04-13T13:59:35.028Z</lastmod>
+    <lastmod>2020-04-13T14:09:56.239Z</lastmod>
     <data>
         <display>
         <title>Flume参数解析</title>
@@ -64,10 +24,50 @@
     
   <url>
     <loc>https://bgnv5.github.io/2020/03/25/Flume%25E5%259F%25BA%25E6%259C%25AC%25E6%25A6%2582%25E5%25BF%25B5/</loc>
-    <lastmod>2020-04-13T13:58:03.486Z</lastmod>
+    <lastmod>2020-04-13T14:07:23.970Z</lastmod>
     <data>
         <display>
         <title>Flume基本概念</title>
+        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
+        
+        <tag>Flume </tag>
+         
+         
+           
+             
+              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E7%259B%2591%25E6%258E%25A7%25E4%25B9%258BGanglia/</loc>
+    <lastmod>2020-04-13T14:06:10.770Z</lastmod>
+    <data>
+        <display>
+        <title>Flume监控之Ganglia</title>
+        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
+        
+        <tag>Flume </tag>
+         
+         
+           
+             
+              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E4%25BC%2581%25E4%25B8%259A%25E9%259D%25A2%25E8%25AF%2595%25E9%25A2%2598/</loc>
+    <lastmod>2020-04-13T14:05:27.520Z</lastmod>
+    <data>
+        <display>
+        <title>Flume企业面试题</title>
         <pubTime>2020-03-25T07:35:45.000Z</pubTime>
         
         <tag>Flume </tag>
