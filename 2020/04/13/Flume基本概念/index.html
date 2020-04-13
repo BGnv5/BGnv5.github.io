@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<script src="/js/clicklove.js"></script>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Flume基本概念 - 程序媛王国</title>
+
+
+    <meta name="description" content="一、概述 Flume最早是Cloudera提供的日志收集系统，后贡献给Apache Flume是一个高可用的、高可靠的、分布式的海量日志采集、聚合和传输的系统 Flume支持在日志系统中定制各类数据发送方，用于收集数据（source） Flume提供对数据的简单处理，并写到各种数据接收方（可定制）的能力（sink）  二、版本 Flume0.9X：又称Flume-og，老版本的flume，需要引入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flume基本概念">
+<meta property="og:url" content="https://bgnv5.github.io/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="程序媛王国">
+<meta property="og:description" content="一、概述 Flume最早是Cloudera提供的日志收集系统，后贡献给Apache Flume是一个高可用的、高可靠的、分布式的海量日志采集、聚合和传输的系统 Flume支持在日志系统中定制各类数据发送方，用于收集数据（source） Flume提供对数据的简单处理，并写到各种数据接收方（可定制）的能力（sink）  二、版本 Flume0.9X：又称Flume-og，老版本的flume，需要引入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bgnv5.github.io/images/og_image.png">
+<meta property="article:published_time" content="2020-04-13T13:34:33.785Z">
+<meta property="article:modified_time" content="2020-04-13T06:25:53.738Z">
+<meta property="article:author" content="BG女王">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bgnv5.github.io/images/og_image.png">
+
+
+
+
+
+<link rel="alternative" href="/atom.xml" title="Flume基本概念" type="application/atom+xml">
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/avatar.png" alt="Flume基本概念" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="My GitHub" href="https://github.com/BGnv5">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Flume基本概念
+            
+        </h1>
+		
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-04-13T13:34:33.785Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-13</time>
+                
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    15 分钟 读完 (大约 2289 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Flume基本概念
+            
+        </h1>
+        <div class="content">
+            <h4 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h4><ol>
+<li>Flume最早是Cloudera提供的日志收集系统，后贡献给Apache</li>
+<li>Flume是一个高可用的、高可靠的、分布式的海量日志采集、聚合和传输的系统</li>
+<li>Flume支持在日志系统中定制各类数据发送方，用于收集数据（source）</li>
+<li>Flume提供对数据的简单处理，并写到各种数据接收方（可定制）的能力（sink）</li>
+</ol>
+<h4 id="二、版本"><a href="#二、版本" class="headerlink" title="二、版本"></a>二、版本</h4><ol>
+<li>Flume0.9X：又称Flume-og，老版本的flume，需要引入zookeeper集群管理，性能也比较低（单线程工作）</li>
+<li>Flume1.X：又称Flume-ng，新版本需要引入zookeeper，和Flume-og不兼容</li>
+</ol>
+<h4 id="三、Flume特性"><a href="#三、Flume特性" class="headerlink" title="三、Flume特性"></a>三、Flume特性</h4><ol>
+<li>可靠性：事务型的数据传递，保证数据的可靠性。一个日志交给flume来处理，不会出现此日志丢失或未被处理的及情况。</li>
+<li>可恢复性：通道可以以内存或文件的方式实现，内存更快，但不可恢复。文件较慢但提供了可恢复性。</li>
+</ol>
+<h4 id="四、Flume组成架构"><a href="#四、Flume组成架构" class="headerlink" title="四、Flume组成架构"></a>四、Flume组成架构</h4><p><img src="/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/C:%5CUsers%5CAdministrator%5CDesktop%5Cflume%E6%9E%B6%E6%9E%84.jpg" alt="flume架构图"></p>
+<p>source不断的接收数据，将数据封装成一个一个的event，然后将event发送给channel，channel作为一个缓冲区会临时存放这些event数据，随后sink会将channel中的event数据发送到指定的地方，如hdfs等。当sink将channel中的数据成功发送出去之后，channel会将event数据进行删除，保证了数据传输的可靠性与安全性。</p>
+<h5 id="Agent"><a href="#Agent" class="headerlink" title="Agent"></a>Agent</h5><p>Flume以agent为最小的独立运行单位，一个agent就是一个JVM进程，主要负责将数据以事件的形式从源头送至目的端。它包含三个核心组件，分别是Source、Channel、Sink。</p>
+<h5 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h5><p>主要负责收集数据，将接收到的数据封装到事件（event）中，然后将事件推送channel中。</p>
+<p>在这个过程中它会先调用doPut()方法把批数据写入到临时缓冲区putList中，然后会检查channel中的容量是否足够，如果足够的话则会调用doCommit()方法把putList中的数据推送的channel中，如果channel容量不够的话，则会调用doRollBack()方法将数据回滚到putList中。</p>
+<p>source可以处理的数据类型包括：netcat、exec、spooling directory、http、avro、thrift、jms、sequence generator、syslog、legacy等</p>
+<h5 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h5><p>是连接source和sink的组件，它可以将事件暂存到内存中也可以持久化到本地磁盘上，直到sink处理完该事件。它相当于一个数据的缓冲区。</p>
+<p>flume自带两种channel：MemoryChannel、FileChannel</p>
+<ul>
+<li><p>MemoryChannel：将事件写入到内存中，可以实现高速的吞吐，但是无法保证数据的完整性，因为程序死亡、机器宕机或者重启都会导致数据丢失。</p>
+</li>
+<li><p>FileChannel：将事件写到磁盘中，虽然效率相对较低，但是保证在程序关闭或者机器宕机的情况下不会丢失数据。</p>
+</li>
+</ul>
+<p>Channel是线程安全的，可以同时处理几个Source的写入操作和几个Sink的读取操作。</p>
+<h5 id="Sink"><a href="#Sink" class="headerlink" title="Sink"></a>Sink</h5><p>主要负责从channel中读取事件（event），将事件拉取到相应的存储系统，或者发送到另外一个Flume Agent中，并删除Channel中的缓存数据。</p>
+<p>在这个过程中它会先调用 doTake() 方法把数据读取到临时缓冲区takeList中，然后检查数据是否发送成功，如果发送的话则调用 doCommit() 方法，把 event 从 takeList 中移除，如果发送失败，则调用 doRollBack() 方法把takeList中的数据回滚到 Channel 中。</p>
+<p>Sink组件的目的地包括：hdfs、logger、avro、thrift、ipc、file、hbase、solr等</p>
+<h5 id="event"><a href="#event" class="headerlink" title="event"></a>event</h5><p>Flume数据传输的基本单元，以Event的形式将数据从源头送至目的地。它由Header和Body两部分组成，header是拦截器过滤好event之后，给event加的具体的header，用来存放该event的一些属性，为K-V结构，Body用来存放该条数据，形式为字节数组，所以一般都是拦截器和Multiplexing Channel Selector 结合起来使用。</p>
+<h4 id="五-Flume拓扑结构"><a href="#五-Flume拓扑结构" class="headerlink" title="五. Flume拓扑结构"></a>五. Flume拓扑结构</h4><h5 id="单一流程"><a href="#单一流程" class="headerlink" title="单一流程"></a>单一流程</h5><p><img src="/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/C:%5CUsers%5CAdministrator%5CDesktop%5C%E5%8D%95%E4%B8%80%E6%B5%81%E7%A8%8B.jpg" alt="单一流程"></p>
+<h5 id="多个agent的数据流（多级流动）"><a href="#多个agent的数据流（多级流动）" class="headerlink" title="多个agent的数据流（多级流动）"></a>多个agent的数据流（多级流动）</h5><p><img src="/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/C:%5CUsers%5CAdministrator%5CDesktop%5C%E5%A4%9A%E4%BB%A3%E7%90%86%E6%B5%81%E7%A8%8B.jpg" alt="多代理流程"></p>
+<h5 id="数据流合并（扇入流）"><a href="#数据流合并（扇入流）" class="headerlink" title="数据流合并（扇入流）"></a>数据流合并（扇入流）</h5><p>在做日志收集的时候一个常见的场景就是，大量的生产日志的客户端发送数据到少量的附属于存储子系统的消费者agent。例如，从数百个web服务器中收集日志，它们发送数据到十几个负责将数据写入HDFS集群的agent。</p>
+<p><img src="/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/C:%5CUsers%5CAdministrator%5CDesktop%5C%E6%B5%81%E7%9A%84%E5%90%88%E5%B9%B6.jpg" alt="流的合并"></p>
+<p>这个在Flume中可以实现，需要配置大量第一层的agent，每一个agent都有一个avro sink,让它们都指向同一个agent的avro source（在这样的场景下也可以使用thrift source/sink/client）。在第二层agent上的source将收到的event合并到一个channel中，event被一个sink消费到它的最终目的地。</p>
+<h5 id="数据流复用（扇出流）"><a href="#数据流复用（扇出流）" class="headerlink" title="数据流复用（扇出流）"></a>数据流复用（扇出流）</h5><p>Flume支持多路输出event流到一个或多个目的地。这是靠定义一个多路数据流实现的，它可以实现复制和选择性路由一个event到一个或者多个channel中。</p>
+<p><img src="/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/C:%5CUsers%5CAdministrator%5CDesktop%5C%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%B5%81.jpg" alt="多路复用流"></p>
+<p>上面的例子展示了agent foo 中source 扇出数据流到三个不同的channel，这个扇出可以是复制或者多路输出。在复制数据流的情况下，每一个event被发送到所有的channel中；在多路输出的情况下，一个event被发送到一部分可用的channel中，它们是根据event的属性和预先配置的值选择channel的。这些映射关系应该被填写在agent的配置文件中。</p>
+<h5 id="负载均衡功能"><a href="#负载均衡功能" class="headerlink" title="负载均衡功能"></a>负载均衡功能</h5><p><img src="/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/C:%5CUsers%5CAdministrator%5CDesktop%5C%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%8A%9F%E8%83%BD.jpg" alt="负载均衡功能"></p>
+<h4 id="六、Interceptor拦截器"><a href="#六、Interceptor拦截器" class="headerlink" title="六、Interceptor拦截器"></a>六、Interceptor拦截器</h4><p>拦截器需要实现org.apache.flume.interceptor.Interceptor接口，通过拦截器可以实现在运行阶段修改/删除event。</p>
+<p>拦截器采用了责任链模式，多个拦截器可以按指定顺序拦截，一个拦截器返回的事件列表被传递给链中的下一个拦截器。</p>
+<p>如果一个拦截器需要删除事件，只需要在返回的事件集中不包含要删除的事件即可。如果要删除所有事件，只需要返回一个空列表。</p>
+<h4 id="七、Channel-Selectors"><a href="#七、Channel-Selectors" class="headerlink" title="七、Channel Selectors"></a>七、Channel Selectors</h4><p>Channel选择器有两种类型：Replicating Channel Selector（默认的）和 Multiplexing Channel Selector。</p>
+<ul>
+<li>Replicating Channel Selector : 将source过来的events发往所有的channel（相当于复制多份）</li>
+<li>Multiplexing Channel Selector：可以根据event中header的值来配置具体发往哪一个Channel中。</li>
+</ul>
+<h4 id="八、Flume-Agent内部原理"><a href="#八、Flume-Agent内部原理" class="headerlink" title="八、Flume Agent内部原理"></a>八、Flume Agent内部原理</h4><p><img src="/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/C:%5CUsers%5CAdministrator%5CDesktop%5Cflume_agent%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.jpg" alt="flume_agent内部原理"></p>
+<ol>
+<li>Source采集数据，将数据封装成事件对象(event)，然后交给Channel Processor</li>
+<li>Channel Processor将事件传递给拦截器链进行简单的数据清洗   </li>
+<li>拦截器链处理完后将数据返回给Channel Processor。  </li>
+<li>Channel Processor将拦截过滤之后的event事件传递给Channel选择器(Channel Selector)，由channel选择器决定每个event具体分配给哪一个Channel。     </li>
+<li>Channel Selector返回给Channel Processor写入event事件的Channel列表。  </li>
+<li>Channel Processor根据Channel选择器的选择结果，将Event事件写入相应的Channel中。  </li>
+<li>最后SinkProcessor启动sink，sink不断到channel中去轮询，将channel中的event事件拿过来。</li>
+</ol>
+<h4 id="九、Flume安装"><a href="#九、Flume安装" class="headerlink" title="九、Flume安装"></a>九、Flume安装</h4><ol>
+<li>将apache-flume-1.6.0-bin.tar.gz上传到Linux的/opt/software 目录下</li>
+<li>解压apache-flume-1.6.0-bin.tar.gz到/opt/module 目录下<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>hadoop100 software]# tar -zxvf apache-flume<span class="number">-1.6</span><span class="number">.0</span>-bin.tar.gz -C /opt/module/</span><br></pre></td></tr></table></figure></li>
+<li>修改apache-flume-1.6.0-bin 的名称为flume-1.6.0<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>hadoop100 module]# mv apache-flume<span class="number">-1.6</span><span class="number">.0</span>-bin/ flume<span class="number">-1.6</span><span class="number">.0</span></span><br></pre></td></tr></table></figure></li>
+<li>将flume/conf 下的flume-env.sh.template 文件修改为flume-env.sh，并配置flume-env.sh<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop100 <span class="keyword">conf</span>]# mv flume-env.<span class="keyword">sh</span>.template flume-env.<span class="keyword">sh</span></span><br><span class="line">[root@hadoop100 <span class="keyword">conf</span>]# <span class="keyword">vim</span> flume-env.<span class="keyword">sh</span></span><br><span class="line">export JAVA_HOME=/<span class="keyword">opt</span>/module/jdk1.<span class="number">8.0</span>_40</span><br></pre></td></tr></table></figure></li>
+<li>配置环境变量<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@hadoop100 conf]# vim ~/.bashrc </span><br><span class="line"><span class="comment">#FLUME</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">FLUME_HOME</span>=/opt/module/flume-1.6.0</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="variable">$PATH</span>:$FLUME_HOME/bin</span><br></pre></td></tr></table></figure>
+&emsp;&emsp;保存使其立即生效<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@hadoop100</span> conf]<span class="meta"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure></li>
+<li>查看Flume版本<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>hadoop100 conf]# flume-ng version</span><br><span class="line">Flume <span class="number">1.6</span><span class="number">.0</span></span><br><span class="line">Source code repository: https:<span class="comment">//git-wip-us.apache.org/repos/asf/flume.git</span></span><br><span class="line">Revision: <span class="number">2561</span>a23240a71ba20bf288c7c2cda88f443c2080</span><br><span class="line">Compiled by hshreedharan on Mon May <span class="number">11</span> <span class="number">11</span>:<span class="number">15</span>:<span class="number">44</span> PDT <span class="number">2015</span></span><br><span class="line">From source with checksum b29e416802ce9ece3269d34233baf43f</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        </div>
+		
+            <ul class="post-copyright">
+				<li><strong>本文标题：</strong><a href="https://bgnv5.github.io/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">Flume基本概念</a></li>
+				<li><strong>本文作者：</strong><a href="https://bgnv5.github.io">BG女王</a></li>
+				<li><strong>本文链接：</strong><a href="https://bgnv5.github.io/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">https://bgnv5.github.io/2020/04/13/Flume%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</a></li>
+				<li><strong>发布时间：</strong>2020-04-13</li>
+				<li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+				</li>
+            </ul>
+        
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/Alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/weixin.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/13/Flume%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Flume参数解析</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/13/Flume%E4%BC%81%E4%B8%9A%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                <span class="level-item">Flume企业面试题</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'a6f62ebcdeb4197a655f',
+        clientSecret: '033fbfe30eaa134e57cf6a9f83b90d61480b0593',
+        id: 'c2a6a8788336e01fd4fc7b6d7b152732',
+        repo: 'BGnv5.github.io',
+        owner: 'BGnv5',
+        admin: "BGnv5",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.png" alt="BG女王">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        BG女王
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        1264021622@qq.com
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>浙江 台州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+		<nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+				
+				<div>	
+                    <p class="heading">
+                        文章
+                    </p>		
+					<a href="/archives/">
+                    <p class="title has-text-weight-normal">
+                        12
+                    </p>
+                    </a>
+				</div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+					<a href="/categories">
+						<p class="title has-text-weight-normal">
+							3
+						</p>
+					</a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            3
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/BGnv5" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/BGnv5">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+	<div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、概述">
+        <span class="has-mr-6">1</span>
+        <span>一、概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#二、版本">
+        <span class="has-mr-6">2</span>
+        <span>二、版本</span>
+        </a></li><li>
+        <a class="is-flex" href="#三、Flume特性">
+        <span class="has-mr-6">3</span>
+        <span>三、Flume特性</span>
+        </a></li><li>
+        <a class="is-flex" href="#四、Flume组成架构">
+        <span class="has-mr-6">4</span>
+        <span>四、Flume组成架构</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Agent">
+        <span class="has-mr-6">4.1</span>
+        <span>Agent</span>
+        </a></li><li>
+        <a class="is-flex" href="#Source">
+        <span class="has-mr-6">4.2</span>
+        <span>Source</span>
+        </a></li><li>
+        <a class="is-flex" href="#Channel">
+        <span class="has-mr-6">4.3</span>
+        <span>Channel</span>
+        </a></li><li>
+        <a class="is-flex" href="#Sink">
+        <span class="has-mr-6">4.4</span>
+        <span>Sink</span>
+        </a></li><li>
+        <a class="is-flex" href="#event">
+        <span class="has-mr-6">4.5</span>
+        <span>event</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#五-Flume拓扑结构">
+        <span class="has-mr-6">5</span>
+        <span>五. Flume拓扑结构</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#单一流程">
+        <span class="has-mr-6">5.1</span>
+        <span>单一流程</span>
+        </a></li><li>
+        <a class="is-flex" href="#多个agent的数据流（多级流动）">
+        <span class="has-mr-6">5.2</span>
+        <span>多个agent的数据流（多级流动）</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据流合并（扇入流）">
+        <span class="has-mr-6">5.3</span>
+        <span>数据流合并（扇入流）</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据流复用（扇出流）">
+        <span class="has-mr-6">5.4</span>
+        <span>数据流复用（扇出流）</span>
+        </a></li><li>
+        <a class="is-flex" href="#负载均衡功能">
+        <span class="has-mr-6">5.5</span>
+        <span>负载均衡功能</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#六、Interceptor拦截器">
+        <span class="has-mr-6">6</span>
+        <span>六、Interceptor拦截器</span>
+        </a></li><li>
+        <a class="is-flex" href="#七、Channel-Selectors">
+        <span class="has-mr-6">7</span>
+        <span>七、Channel Selectors</span>
+        </a></li><li>
+        <a class="is-flex" href="#八、Flume-Agent内部原理">
+        <span class="has-mr-6">8</span>
+        <span>八、Flume Agent内部原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#九、Flume安装">
+        <span class="has-mr-6">9</span>
+        <span>九、Flume安装</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/avatar.png" alt="Flume基本概念" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 BG女王&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="BGnv5 GitHub" href="https://github.com/BGnv5">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'https://bgnv5.github.io',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
