@@ -3,75 +3,100 @@
 
     
   <url>
-    <loc>https://bgnv5.github.io/2020/04/13/Flume%25E7%259B%2591%25E6%258E%25A7%25E4%25B9%258BGanglia/</loc>
-    <lastmod>2020-04-13T13:25:54.545Z</lastmod>
-    <data>
-        <display>
-        <title>Flume监控之Ganglia</title>
-        <pubTime>2020-04-13T13:34:39.265Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bgnv5.github.io/2020/04/13/Flume%25E5%258F%2582%25E6%2595%25B0%25E8%25A7%25A3%25E6%259E%2590/</loc>
-    <lastmod>2020-04-13T07:28:33.780Z</lastmod>
-    <data>
-        <display>
-        <title>Flume参数解析</title>
-        <pubTime>2020-04-13T13:34:36.814Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bgnv5.github.io/2020/04/13/Flume%25E5%259F%25BA%25E6%259C%25AC%25E6%25A6%2582%25E5%25BF%25B5/</loc>
-    <lastmod>2020-04-13T06:25:53.738Z</lastmod>
-    <data>
-        <display>
-        <title>Flume基本概念</title>
-        <pubTime>2020-04-13T13:34:33.785Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://bgnv5.github.io/2020/04/13/Flume%25E4%25BC%2581%25E4%25B8%259A%25E9%259D%25A2%25E8%25AF%2595%25E9%25A2%2598/</loc>
-    <lastmod>2020-04-12T15:02:13.681Z</lastmod>
+    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E4%25BC%2581%25E4%25B8%259A%25E9%259D%25A2%25E8%25AF%2595%25E9%25A2%2598/</loc>
+    <lastmod>2020-04-13T14:01:33.755Z</lastmod>
     <data>
         <display>
         <title>Flume企业面试题</title>
-        <pubTime>2020-04-13T13:34:30.431Z</pubTime>
+        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
         
+        <tag>Flume </tag>
+         
          
            
+             
+              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
+          
         </display>
     </data>
     </url>
 
     
   <url>
-    <loc>https://bgnv5.github.io/2020/04/13/Flume%25E6%25A1%2588%25E4%25BE%258B%25E5%25AE%259E%25E6%2593%258D/</loc>
-    <lastmod>2020-04-12T14:21:19.662Z</lastmod>
+    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E7%259B%2591%25E6%258E%25A7%25E4%25B9%258BGanglia/</loc>
+    <lastmod>2020-04-13T14:00:26.619Z</lastmod>
+    <data>
+        <display>
+        <title>Flume监控之Ganglia</title>
+        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
+        
+        <tag>Flume </tag>
+         
+         
+           
+             
+              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E5%258F%2582%25E6%2595%25B0%25E8%25A7%25A3%25E6%259E%2590/</loc>
+    <lastmod>2020-04-13T13:59:35.028Z</lastmod>
+    <data>
+        <display>
+        <title>Flume参数解析</title>
+        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
+        
+        <tag>Flume </tag>
+         
+         
+           
+             
+              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E5%259F%25BA%25E6%259C%25AC%25E6%25A6%2582%25E5%25BF%25B5/</loc>
+    <lastmod>2020-04-13T13:58:03.486Z</lastmod>
+    <data>
+        <display>
+        <title>Flume基本概念</title>
+        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
+        
+        <tag>Flume </tag>
+         
+         
+           
+             
+              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://bgnv5.github.io/2020/03/25/Flume%25E6%25A1%2588%25E4%25BE%258B%25E5%25AE%259E%25E6%2593%258D/</loc>
+    <lastmod>2020-04-13T13:50:23.828Z</lastmod>
     <data>
         <display>
         <title>Flume案例实操</title>
-        <pubTime>2020-04-13T13:34:21.978Z</pubTime>
+        <pubTime>2020-03-25T07:35:45.000Z</pubTime>
         
+        <tag>Flume </tag>
+         
          
            
+             
+              <breadCrumb title="Flume" url="https://bgnv5.github.io/categories/Flume/"/>
+          
         </display>
     </data>
     </url>

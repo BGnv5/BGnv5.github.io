@@ -11,17 +11,18 @@
 <title>Flume案例实操 - 程序媛王国</title>
 
 
-    <meta name="description" content="监控端口数据案例需求首先，Flume监控本机44444端口，然后通过nc工具向本机44444端口发送消息，最后Flume将监听的数据实时显示在控制台。 需求分析 通过nc工具向本机的44444端口发送数据 Flume监控本机的44444端口，通过Flume的source端读取数据 Flume将获取的数据通过sink端写出到控制台实现步骤 将rpm软件包烤入&#x2F;opt&#x2F;software文件夹下面，执行">
+    <meta name="description" content="Flume案例实操">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Flume案例实操">
-<meta property="og:url" content="https://bgnv5.github.io/2020/04/13/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/index.html">
+<meta property="og:url" content="https://bgnv5.github.io/2020/03/25/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/index.html">
 <meta property="og:site_name" content="程序媛王国">
-<meta property="og:description" content="监控端口数据案例需求首先，Flume监控本机44444端口，然后通过nc工具向本机44444端口发送消息，最后Flume将监听的数据实时显示在控制台。 需求分析 通过nc工具向本机的44444端口发送数据 Flume监控本机的44444端口，通过Flume的source端读取数据 Flume将获取的数据通过sink端写出到控制台实现步骤 将rpm软件包烤入&#x2F;opt&#x2F;software文件夹下面，执行">
+<meta property="og:description" content="Flume案例实操">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bgnv5.github.io/images/og_image.png">
-<meta property="article:published_time" content="2020-04-13T13:34:21.978Z">
-<meta property="article:modified_time" content="2020-04-12T14:21:19.662Z">
+<meta property="article:published_time" content="2020-03-25T07:35:45.000Z">
+<meta property="article:modified_time" content="2020-04-13T13:50:23.828Z">
 <meta property="article:author" content="BG女王">
+<meta property="article:tag" content="Flume">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://bgnv5.github.io/images/og_image.png">
 
@@ -149,14 +150,20 @@
 		
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-13T13:34:21.978Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-04-13</time>
+                <time class="level-item has-text-grey" datetime="2020-03-25T07:35:45.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-03-25</time>
                 
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-04-13T13:50:23.828Z"><i class="far fa-calendar-check">&nbsp;</i>2020-04-13</time>
+                
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Flume/">Flume</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    30 分钟 读完 (大约 4543 个字)
+                    31 分钟 读完 (大约 4598 个字)
                 </span>
                 
                 
@@ -174,7 +181,10 @@
             
         </h1>
         <div class="content">
-            <h4 id="监控端口数据"><a href="#监控端口数据" class="headerlink" title="监控端口数据"></a>监控端口数据</h4><h5 id="案例需求"><a href="#案例需求" class="headerlink" title="案例需求"></a>案例需求</h5><p>首先，Flume监控本机44444端口，然后通过nc工具向本机44444端口发送消息，最后Flume将监听的数据实时显示在控制台。</p>
+            <p>监控端口数据<br>实时读取本地文件到hdfs<br>实时读取目录文件到HDFS<br>单数据源多出口（选择器）<br>单数据源多出口（sink组）<br>多数据源汇总</p>
+<a id="more"></a>
+
+<h4 id="监控端口数据"><a href="#监控端口数据" class="headerlink" title="监控端口数据"></a>监控端口数据</h4><h5 id="案例需求"><a href="#案例需求" class="headerlink" title="案例需求"></a>案例需求</h5><p>首先，Flume监控本机44444端口，然后通过nc工具向本机44444端口发送消息，最后Flume将监听的数据实时显示在控制台。</p>
 <h5 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h5><ol>
 <li>通过nc工具向本机的44444端口发送数据</li>
 <li>Flume监控本机的44444端口，通过Flume的source端读取数据</li>
@@ -243,7 +253,7 @@ netstat 语法：<br>参数 | 说明</li>
 <li>查看upload文件夹<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@hadoop100 upload]</span># <span class="selector-tag">ls</span></span><br><span class="line"><span class="selector-tag">bgnv5</span><span class="selector-class">.log</span><span class="selector-class">.COMPLETED</span>  <span class="selector-tag">bgnv5</span><span class="selector-class">.tmp</span>  <span class="selector-tag">bgnv5</span><span class="selector-class">.txt</span><span class="selector-class">.COMPLETED</span></span><br></pre></td></tr></table></figure>
 <h4 id="单数据源多出口（选择器）"><a href="#单数据源多出口（选择器）" class="headerlink" title="单数据源多出口（选择器）"></a>单数据源多出口（选择器）</h4></li>
 </ol>
-<p><img src="/2020/04/13/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/C:%5CUsers%5CAdministrator%5CDesktop%5C%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%B5%81.jpg" alt="多路复用流"></p>
+<p><img src="/2020/03/25/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D%5C%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%B5%81.jpg" alt="多路复用流"></p>
 <h5 id="案例需求-3"><a href="#案例需求-3" class="headerlink" title="案例需求"></a>案例需求</h5><p>使用flume-1监控文件变动，flume-1将变动内容传递给flume-2，flume-2负责存储到HDFS。同时flume-1将变动内容传递给flume-3，flume-3负责输出到local filesystem。</p>
 <h5 id="实现步骤-3"><a href="#实现步骤-3" class="headerlink" title="实现步骤"></a>实现步骤</h5><ol>
 <li>准备工作</li>
@@ -272,7 +282,7 @@ netstat 语法：<br>参数 | 说明</li>
 <li>检查/opt/module/datas/flume3目录中的数据<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">root@</span>hadoop100 flume3]# ll</span><br><span class="line">总用量 <span class="number">8</span></span><br><span class="line">-rw-r--r-- <span class="number">1</span> root root    <span class="number">0</span> <span class="number">4</span>月  <span class="number">12</span> <span class="number">19</span>:<span class="number">26</span> <span class="number">1586690789923</span><span class="number">-1</span></span><br></pre></td></tr></table></figure>
 <h4 id="单数据源多出口（sink组）"><a href="#单数据源多出口（sink组）" class="headerlink" title="单数据源多出口（sink组）"></a>单数据源多出口（sink组）</h4></li>
 </ol>
-<p><img src="/2020/04/13/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/C:%5CUsers%5CAdministrator%5CDesktop%5C%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%8A%9F%E8%83%BD.jpg" alt="负载均衡功能"></p>
+<p><img src="/2020/03/25/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D%5C%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%8A%9F%E8%83%BD.jpg" alt="负载均衡功能"></p>
 <h5 id="案例需求-4"><a href="#案例需求-4" class="headerlink" title="案例需求"></a>案例需求</h5><p>使用Flume-1监控文件变动，Flume-1将变动内容传递给Flume-2,Flume-2负责存储到HDFS。同时Flume-1将变动内容传递给Flume-3,Flume-3也负责存储到HDFS</p>
 <h5 id="实现步骤-4"><a href="#实现步骤-4" class="headerlink" title="实现步骤"></a>实现步骤</h5><ol>
 <li>准备工作</li>
@@ -300,7 +310,7 @@ netstat 语法：<br>参数 | 说明</li>
 
 </li>
 </ol>
-<h4 id="多数据源汇总"><a href="#多数据源汇总" class="headerlink" title="多数据源汇总"></a>多数据源汇总</h4><p><img src="/2020/04/13/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/C:%5CUsers%5CAdministrator%5CDesktop%5C%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%8A%9F%E8%83%BD.jpg" alt="负载均衡功能"></p>
+<h4 id="多数据源汇总"><a href="#多数据源汇总" class="headerlink" title="多数据源汇总"></a>多数据源汇总</h4><p><img src="/2020/03/25/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D%5C%E6%B5%81%E7%9A%84%E5%90%88%E5%B9%B6.jpg" alt="流的合并"></p>
 <h5 id="案例需求-5"><a href="#案例需求-5" class="headerlink" title="案例需求"></a>案例需求</h5><p>flume-1监控文件hive.log，flume-2监控某一个端口的数据流，flume-1与flume-2将数据发送给flume-3，flume3将最终数据写入到HDFS</p>
 <h5 id="实现步骤-5"><a href="#实现步骤-5" class="headerlink" title="实现步骤"></a>实现步骤</h5><ol>
 <li>准备工作</li>
@@ -339,14 +349,24 @@ netstat 语法：<br>参数 | 说明</li>
         </div>
 		
             <ul class="post-copyright">
-				<li><strong>本文标题：</strong><a href="https://bgnv5.github.io/2020/04/13/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/">Flume案例实操</a></li>
+				<li><strong>本文标题：</strong><a href="https://bgnv5.github.io/2020/03/25/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/">Flume案例实操</a></li>
 				<li><strong>本文作者：</strong><a href="https://bgnv5.github.io">BG女王</a></li>
-				<li><strong>本文链接：</strong><a href="https://bgnv5.github.io/2020/04/13/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/">https://bgnv5.github.io/2020/04/13/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/</a></li>
-				<li><strong>发布时间：</strong>2020-04-13</li>
+				<li><strong>本文链接：</strong><a href="https://bgnv5.github.io/2020/03/25/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/">https://bgnv5.github.io/2020/03/25/Flume%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%93%8D/</a></li>
+				<li><strong>发布时间：</strong>2020-03-25</li>
 				<li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
 				</li>
             </ul>
         
+        
+        <hr style="height:1px;margin:1rem 0"/>
+		<div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Flume/" rel="tag">Flume</a>
+                </div>
+            </div>
+        </div>
         
         
         
@@ -394,16 +414,16 @@ netstat 语法：<br>参数 | 说明</li>
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/13/Flume%E4%BC%81%E4%B8%9A%E9%9D%A2%E8%AF%95%E9%A2%98/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/25/Flume%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Flume企业面试题</span>
+                <span class="level-item">Flume参数解析</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/07/hive%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E4%B8%80%EF%BC%89/">
-                <span class="level-item">hive基本操作(一)</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/24/test/">
+                <span class="level-item">test</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -424,7 +444,7 @@ netstat 语法：<br>参数 | 说明</li>
     var gitalk = new Gitalk({
         clientID: 'a6f62ebcdeb4197a655f',
         clientSecret: '033fbfe30eaa134e57cf6a9f83b90d61480b0593',
-        id: 'ef66ccf9517e1d4d3285fd3869a621c6',
+        id: '4d4b604f361868707737f6854646b244',
         repo: 'BGnv5.github.io',
         owner: 'BGnv5',
         admin: "BGnv5",
@@ -494,7 +514,7 @@ netstat 语法：<br>参数 | 说明</li>
                     </p>
 					<a href="/categories">
 						<p class="title has-text-weight-normal">
-							3
+							4
 						</p>
 					</a>
                 </div>
@@ -506,7 +526,7 @@ netstat 语法：<br>参数 | 说明</li>
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
